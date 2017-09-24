@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id = "student1" class = "spring.choi.test6.Student">
+		<constructor-arg value = "최웅진" />
+		<constructor-arg value = "26" />	
+		<constructor-arg>
+			<list>
+				<value>줄넘기</value>
+				<value>복싱</value>
+			</list>
+		</constructor-arg>
+		
+		<property name="height">
+			<value>178</value>
+		</property>
+		
+		<property name="weight">
+			<value>77</value>
+		</property>	
+	</bean>
+	
+	<bean id = "studentInfo1" class = "spring.choi.test6.StudentInfo">
+		<property name="student">
+			<ref bean = "student1"/>
+		</property>
+	</bean>
+	
+</beans>
