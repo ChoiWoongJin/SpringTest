@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id = "logAop" class = "spring.choi.test9.LogAop" />
+	
+	<aop:config>
+		<aop:aspect id = "logger" ref = "logAop" >
+			<aop:pointcut id = "publicM" expression = "within(spring.choi.test9.*)" />
+			<aop:around pointcut-ref = "publicM" method = "loggerAop" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id = "student" class = "spring.choi.test9.Student" >
+		<property name = "name" value = "최웅진" />
+		<property name = "age" value = "26" />
+		<property name = "gradeNum" value = "3" />
+		<property name = "classNum" value = "5" />
+	</bean>
+	
+	<bean id = "worker" class = "spring.choi.test9.Worker" >
+		<property name = "name" value = "최웅진" />
+		<property name = "age" value = "26" />
+		<property name = "job" value = "개발자" />
+	</bean>
+
+</beans>
